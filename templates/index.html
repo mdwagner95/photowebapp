@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Filter App</title>
+</head>
+<body>
+    <h1>Image Filter App</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="image">Upload a New Image:</label>
+            <input type="file" name="image" id="image" accept="image/*">
+            <button type="submit" name="change_image">Change Image</button>
+        </div>
+        <br>
+        {% if image_url %}
+            <div>
+                <h3>Current Image:</h3>
+                <img src="{{ image_url }}" alt="Processed Image" style="max-width: 100%; height: auto;">
+            </div>
+            <input type="hidden" name="current_image" value="{{ image_url }}">
+            <input type="hidden" name="original_image" value="{{ image_url }}">
+        {% endif %}
+        <br>
+        <button type="submit" name="remove_red">Remove Red</button>
+        <label for="red_amount">Red Amount:</label>
+        <input type="number" id="red_amount" name="red_amount" min="0" max="255" value="0"><br>
+        <button type="submit" name="reset">Reset Image</button>
+        <button type="submit" name="dummy_filter">Future Filter 1</button>
+        <button type="submit" name="dummy_filter">Future Filter 2</button>
+    </form>
+</body>
+</html>
